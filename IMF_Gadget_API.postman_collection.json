@@ -1,0 +1,213 @@
+{
+  "info": {
+    "name": "IMF Gadget API",
+    "description": "Postman collection for the IMF Gadget API, including authentication and gadget endpoints.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/auth/register",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "auth",
+            "register"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"testuser\",\n  \"password\": \"testpass\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/auth/login",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "auth",
+            "login"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"testuser\",\n  \"password\": \"testpass\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Get All Gadgets",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/gadgets",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "gadgets"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Filter Gadgets by Status",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/gadgets?status=Available",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "gadgets"
+          ],
+          "query": [
+            {
+              "key": "status",
+              "value": "Available"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Add New Gadget",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/gadgets",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "gadgets"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Stealth Drone\",\n  \"status\": \"Available\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Update Gadget",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/gadgets/:id",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "gadgets",
+            ":id"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Advanced Stealth Drone\",\n  \"status\": \"Deployed\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Decommission Gadget",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/gadgets/:id",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "gadgets",
+            ":id"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Self-Destruct Gadget",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/gadgets/:id/self-destruct",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "gadgets",
+            ":id",
+            "self-destruct"
+          ]
+        }
+      }
+    }
+  ]
+}
